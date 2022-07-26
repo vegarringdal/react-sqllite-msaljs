@@ -1,19 +1,19 @@
-import { initHttpConfig, startHttpServer } from "./initDefaultHttp";
-
-/**
- * if you need code from common code then use complete path on backend
- * import { commonCodeString } from "../../common/src/exports";
- * console.log(commonCodeString);
- */
+import { initHttpConfig } from "./utils/initDefaultHttp";
+import { startHttpServer } from "./utils/startHttpServer";
+import express from "express";
+import { auth } from "./api/auth";
+import { azureConfig } from "./api/azureConfig";
+export const app = express();
 
 // start application
-initHttpConfig();
+initHttpConfig(app);
 
 // init database connection
 // TODO: for you :-)
 
 // add rest api
-// TODO: for you :-)
+auth(app);
+azureConfig(app);
 
 // time to start server
-startHttpServer();
+startHttpServer(app);

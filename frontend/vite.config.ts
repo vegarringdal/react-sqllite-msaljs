@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import reactRefresh from "@vitejs/plugin-react-refresh";
+import react from "@vitejs/plugin-react";
 
 const PORT_API = 1081
 const PORT_WEB = 1080
@@ -8,7 +8,10 @@ const SERVER_API_ROOT = "/api"
 // https://vitejs.dev/config/
 export default defineConfig({
     root: "./src",
-    plugins: [reactRefresh()],
+    plugins: [react()],
+    define: {
+        VERSION: `"${require("../package.json").version}"`
+    },
     server: {
         port: PORT_WEB,
         proxy: {

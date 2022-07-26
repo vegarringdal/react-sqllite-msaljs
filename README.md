@@ -1,10 +1,5 @@
-# react & vitejs template for nodejs backend
-
-Trying out simple backend/frontend project template
-
--   Trying out npm workspaces in hope it might help a little..
--   Using vitejs for very fast bundling for frontend
--   Using homemade script/package with esbuild for backend and pretty typechecking
+# react, sqlite/msal
+Simple starter with react frontned and sqllite/masal backend
 
 ### Development & run
 
@@ -12,37 +7,14 @@ Trying out simple backend/frontend project template
 -   `npm start` to start dev mode (edit in front/back and common triggers rebuild, also re-run
     typechecker)
 
-If you like to run backend, frontend & typechecking in own terminals you can use these:
-
--   `start:frontend`
--   `start:backend`
--   `start:typechecker`
-
-If you need to override this during development then you need to add '.env' to root See
-`config_default.ts` at root if you need to edit these
 
 ```env
-# BACKEND
-
-# http server
-SERVER_PORT         # default: 1080 - uses 1081 in dev mode, since its only API server
-SERVER_HOST         # default: 0.0.0.0
-SERVER_COMPRESSION  # default: true
-SERVER_API_ROOT     # default: /api - vitejs also uses this for proxy settings
-
-# express session
-SESSION_MAX_AGE     # default: 864000000
-SESSION_DOMAIN      # default: 0.0.0.0
-SESSION_PRIVATE_KEY # default: change_me
-SESSION_NAME        # default: session_name
-SESSION_HTTP_ONLY   # default: true
-SESSION_SAME_SITE   # default: true
-SESSION_SECURE      # default is set by esbuild - default true if not development
-
-
-# DEVELOPMENT ONLY
-PORT_API:           # default : 1081 - Will be used by backend when it just a api server and vitejs
-PORT_WEB:           # default : 1080 - Will be used by vitejs dev server
+# you need to add this for it to work.. 
+# Azure - https://login.microsoftonline.com/
+AZURE_CLIENT_ID=705e81d1-9651-4df-8dfcb-a3sdfdc994
+AZURE_TENDANT_ID=0bfd34b6-077d-43349-9617-c56c6df235b
+# important you use api:// under scope, do not use msal scopes, we can not verify token if you do
+AZURE_SCOPES=api://705e81d1-9651-4df-8dfcb-a3sdfdc994/connect/
 ```
 
 ## Make builds & run
@@ -50,33 +22,6 @@ PORT_WEB:           # default : 1080 - Will be used by vitejs dev server
 -   `npm run build` to build production
 -   `npm run serve` to run production
 
-Serve starts build on backend (dist folder, index.js), and uses frontend dist folder to serve www.
-
-## Testing
-
--   `npm run prettier` to run prettier on all ts and json files
--   `npm run eslint` to run eslint on all (without --fix)
--   `npm run eslint:fix` to run eslint on all (with --fix)
--   `npm run test` to run jest on all
--   `npm run typecheck` to run typescript check (throws on error)
--   `npm run typecheck:watch` to run typescript check in watch mode
--   `npm run ci` runs test , eslint without fix and typecheck. 
-
-### Pre commit runs:
-  -  `npm run eslint`
-  -  `npm run typecheck`
-
-
-### Github action runs:
-  -  `npm install -g npm`
-  -  `npm run build`
-  -  `npm run ci`
-
-
-## commit linting/checks
-
--   uses lint-stage on commit messages, fix: feat: show in change log
--   runs eslint on pre-commit
 
 ## Frontend/backend libs
 
@@ -95,12 +40,9 @@ Backend:
 
 -   language: typescript
 -   testing: jest/eslint
--   database: oracledb
 -   http framework: expressjs
--   express middleware: express-session
--   express middleware: compression/zlib
--   express middleware: rate-limiter-flexible
 -   express middleware: multer
+-   database: sqlite 3
 -   timer: node-cron
 
 ## First time usage:
@@ -108,6 +50,7 @@ Backend:
 -   you should edit the package.json name & description
 -   add correct url to .versionrc.json
 -   update lisense and author
+-   add .env file with you msal(azure) config
 
 ## Docker
 
@@ -120,7 +63,4 @@ Ive added default docker file to help build. You need to replace tag and name.
 -   Check its running:
     -   `docker logs myAppv01`
 
-### todo
-
--   look into component testing with react, or puppeteer
 

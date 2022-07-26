@@ -21,14 +21,3 @@ const backend = TypeChecker({
 backend.printSettings();
 backend.inspectAndPrint();
 backend.worker_watch(["./"]);
-
-const common = TypeChecker({
-    basePath: "./common",
-    name: "checker_common",
-    shortenFilenames: false,
-    tsConfig: "./tsconfig.json"
-});
-
-common.printSettings();
-common.inspectAndPrint();
-common.worker_watch("./");

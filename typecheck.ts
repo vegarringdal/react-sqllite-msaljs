@@ -29,14 +29,3 @@ const backend = TypeChecker({
 
 backend.printSettings();
 backend.inspectAndPrint();
-
-const common = TypeChecker({
-    basePath: "./common",
-    name: "checker_common",
-    tsConfig: "./tsconfig.json",
-    throwOnSemantic: true,
-    throwOnSyntactic: true
-});
-
-common.printSettings();
-common.inspectAndPrint();

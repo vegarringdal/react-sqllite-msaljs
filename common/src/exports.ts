@@ -1,8 +1,0 @@
-/**
- * IMPORTANT
- * DO NOT IMPORT ANY MODULES IN COMMON CODE
- * ALL IMPORTS NEED TO BE INTERNAL ONLY
- * SO IT CAN BE USED BY BROWSER AND NODEJS
- */
-
-export const commonCodeString = "Im common code";
