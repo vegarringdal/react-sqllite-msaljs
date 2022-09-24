@@ -11,10 +11,11 @@ Simple starter with react frontned and sqllite/masal backend
 ```env
 # you need to add this for it to work.. 
 # Azure - https://login.microsoftonline.com/
-AZURE_CLIENT_ID=705e81d1-9651-4df-8dfcb-a3sdfdc994
-AZURE_TENDANT_ID=0bfd34b6-077d-43349-9617-c56c6df235b
+# you need to make your own, these values will only work for localhost - made with my azure user
+AZURE_CLIENT_ID=705e81d1-9651-4314-8acb-a3964b14c994
+AZURE_TENDANT_ID=0bfdc7b6-077d-4379-9617-c56c6453235b
 # important you use api:// under scope, do not use msal scopes, we can not verify token if you do
-AZURE_SCOPES=api://705e81d1-9651-4df-8dfcb-a3sdfdc994/connect/
+AZURE_SCOPES=api://705e81d1-9651-4314-8acb-a3964b14c994/connect
 ```
 
 ## Make builds & run
